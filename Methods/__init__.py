@@ -1,1 +1,1 @@
-__all__ = ['CreateCustomer']
+__all__ = ['CreateCustomer', 'setActiveCustomer']
