@@ -24,9 +24,9 @@ class Customer():
 
     def get_email(self):
         return self.__email
-
-    def get_username(self):
-        return self.__username
         
     def get_address(self):
     	return self.__address
+
+    def get_active_status(self):
+    	return self.__is_active
