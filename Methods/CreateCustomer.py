@@ -31,6 +31,7 @@ class Customer():
     def get_active_status(self):
     	return self.__is_active
 
+# Added method to set an active customer, with which the user can create new orders -ps
     def set_active_customer(self): 
         self.__is_active = True
         return self.__is_active
