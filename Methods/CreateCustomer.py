@@ -30,3 +30,8 @@ class Customer():
 
     def get_active_status(self):
     	return self.__is_active
+
+    def set_active_customer(self): 
+        self.__is_active = True
+        return self.__is_active
+   
