@@ -3,6 +3,7 @@ import sqlite3
 
 class PaymentMethod():
 
+
 	"""Create A Payment Method the listed properties"""
 
 	def __init__(self, card_number, card_type, exp_date, cvv, name_on_card, customer):
@@ -50,5 +51,4 @@ class PaymentMethod():
 		return self.__customer
 
 		
-
 
