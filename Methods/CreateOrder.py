@@ -14,7 +14,7 @@ class Order():
 
 
 
-    def get_customer(self):
+    def get_customer_full_name(self):
         return self.__customer.get_full_name()
 
     def get_order_complete(self):
