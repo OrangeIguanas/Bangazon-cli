@@ -1,5 +1,9 @@
 import sqlite3
 
+'''
+Creating Customer Class that will be tied to active customer
+'''
+
 class Customer():
 
     def __init__(self, first_name, last_name, email, phone_number, city, state, postalZip, address):
@@ -13,8 +17,12 @@ class Customer():
         self.__address = address
         self.__is_active = False
 
+    '''
+    Getters for retreiving customer information
+    '''
+
     def get_full_name(self):
-        return "{},{}".format(self.__first_name, self.__last_name)
+        return "{} {}".format(self.__first_name, self.__last_name)
 
     def get_first_name(self):
         return self.__first_name
@@ -28,8 +36,22 @@ class Customer():
     def get_address(self):
     	return self.__address
 
+    def get_city(self):
+        return self.__city
+
+    def get_state(self):
+        return self.__state
+
+    def get_postal_zip(self):
+        return self.__postalZip
+
     def get_active_status(self):
     	return self.__is_active
+
+    def get_phone_number(self):
+        return self.__phone_number
+
+
 
 # Added method to set an active customer, with which the user can create new orders -ps
     def set_active_customer(self): 
