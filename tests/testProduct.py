@@ -16,7 +16,7 @@ class ProductTest(unittest.TestCase):
 	def test_can_create_product(self):
 
 
-		tampon = Product(name = "Tampax Tampon", price = 1.00, qty = 15, description = "You already know" , category = "Hygene")
+		lazer = Product(name = "lazer", price = 13.00, qty = 15, description = "You already know" , category = "Lazer")
 		
 		self.assertIsInstance(tampon, Product)
 
@@ -27,13 +27,13 @@ class ProductTest(unittest.TestCase):
 
 	def test_product_has_properties(self):
 
-		tampon = Product(name = "Tampax Tampon", price = 1.00, qty = 15, description = "You already know" , category = "Hygene")
+		lazer = Product(name = "High Powered Lazer", price = 13.00, qty = 15, description = "You already know" , category = "Lazers")
 
-		self.assertIsNotNone(tampon.get_name())
-		self.assertIsNotNone(tampon.get_price())
-		self.assertIsNotNone(tampon.get_qty())
-		self.assertIsNotNone(tampon.get_description())
-		self.assertIsNotNone(tampon.get_category())
+		self.assertIsNotNone(lazer.get_name())
+		self.assertIsNotNone(lazer.get_price())
+		self.assertIsNotNone(lazer.get_qty())
+		self.assertIsNotNone(lazer.get_description())
+		self.assertIsNotNone(lazer.get_category())
 
 
 
