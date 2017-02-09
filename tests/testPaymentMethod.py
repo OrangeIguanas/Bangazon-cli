@@ -19,7 +19,8 @@ class TestPaymentMethod(unittest.TestCase):
 									   exp_date="07/20", 
 									   cvv="333", 
 									   name_on_card="Bob Bobbins", 
-									   client="name"
+									   customer="name"
+
 									   )
 		
 		self.assertIsInstance(self.visa_card, PaymentMethod)
@@ -34,7 +35,8 @@ class TestPaymentMethod(unittest.TestCase):
 									   exp_date="07/20", 
 									   cvv="333", 
 									   name_on_card="Bob Bobbins", 
-									   client="Joe Mammy"
+									   customer="Joe Mammy"
+
 									   )
 
 		self.assertIsNotNone(self.visa_card.get_card_number())
@@ -42,7 +44,9 @@ class TestPaymentMethod(unittest.TestCase):
 		self.assertIsNotNone(self.visa_card.get_card_type())
 		self.assertIsNotNone(self.visa_card.get_exp_date())
 		self.assertIsNotNone(self.visa_card.get_cvv())
-		self.assertIsNotNone(self.visa_card.get_client())
+		self.assertIsNotNone(self.visa_card.get_customer())
+
+
 		
 	def test_can_get_value_from_customer_class(self):
 
@@ -63,10 +67,11 @@ class TestPaymentMethod(unittest.TestCase):
 							   exp_date="07/20", 
 							   cvv="333", 
 							   name_on_card="Bob Bobbins", 
-							   client=self.bob.get_last_name()
+							   customer=self.bob.get_last_name()
 							   )
 
-		print(self.visa_card.get_client())
+		print(self.visa_card.get_customer())
+
 
 if __name__ == "__main__":
 	unittest.main()
