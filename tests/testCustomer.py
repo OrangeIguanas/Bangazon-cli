@@ -17,9 +17,14 @@ class TestCreateCustomer(unittest.TestCase):
         self.assertIsInstance(self.bob, Customer)
 
         '''
-        Assertion that Clients full name gets returned correctly
+        Test that Clients full name gets returned correctly
         '''
-        
+    def test_customer_has_properties(self):
+
+    	self.bob = Customer(first_name = "Bob", last_name="Bobbins", address = "111 Front Street", city = "Smyrna" , state = "Tennessee" , postalZip = 37167, phone_number="615-999-1111", email="d@d.com")
+
+    	print(self.bob.get_full_name())
+
         self.assertIn("Bob Bobbins", self.bob.get_full_name())
         self.assertIsNotNone(self.bob.get_first_name())
         self.assertIsNotNone(self.bob.get_last_name())
@@ -31,8 +36,12 @@ class TestCreateCustomer(unittest.TestCase):
         self.assertIsNotNone(self.bob.get_email())
 
         '''
-        Assertion that customer is not active upon creation.
+        Test that customer is not active upon creation.
         '''
+
+    def test_user_is_not_active(self):
+
+    	self.bob = Customer(first_name = "Bob", last_name="Bobbins", address = "111 Front Street", city = "Smyrna" , state = "Tennessee" , postalZip = 37167, phone_number="615-999-1111", email="d@d.com")
 
         self.assertFalse(self.bob.get_active_status())
         
