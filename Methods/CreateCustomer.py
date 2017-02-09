@@ -14,7 +14,7 @@ class Customer():
         self.__is_active = False
 
     def get_full_name(self):
-        return "{} {}".format(self.__first_name, self.__last_name)
+        return "{},{}".format(self.__first_name, self.__last_name)
 
     def get_first_name(self):
         return self.__first_name
@@ -36,3 +36,8 @@ class Customer():
         self.__is_active = True
         return self.__is_active
    
+#Method to set an inactive customer for logging out
+    def set_logout_customer(self):
+        self.__is_active = False
+        return self.__is_active
+
