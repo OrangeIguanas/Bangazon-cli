@@ -8,3 +8,4 @@ obj
 *db
 db.sqlite3
 migrations
+*.pyc
