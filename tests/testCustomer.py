@@ -2,6 +2,10 @@ import unittest
 import sys
 sys.path.append("../")
 
+'''
+Test to make sure that customer can be created, and that none of the properties on customer are None
+'''
+
 from Methods.CreateCustomer import Customer
 
 class TestCreateCustomer(unittest.TestCase):
@@ -11,6 +15,11 @@ class TestCreateCustomer(unittest.TestCase):
     	print(self.bob.get_full_name())
     	
         self.assertIsInstance(self.bob, Customer)
+
+        '''
+        Assertion that Clients full name gets returned correctly
+        '''
+        
         self.assertIn("Bob Bobbins", self.bob.get_full_name())
         self.assertIsNotNone(self.bob.get_first_name())
         self.assertIsNotNone(self.bob.get_last_name())
@@ -20,6 +29,11 @@ class TestCreateCustomer(unittest.TestCase):
         self.assertIsNotNone(self.bob.get_postal_zip())
         self.assertIsNotNone(self.bob.get_phone_number())
         self.assertIsNotNone(self.bob.get_email())
+
+        '''
+        Assertion that customer is not active upon creation.
+        '''
+
         self.assertFalse(self.bob.get_active_status())
         
 

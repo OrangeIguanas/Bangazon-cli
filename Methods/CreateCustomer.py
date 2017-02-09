@@ -1,5 +1,9 @@
 import sqlite3
 
+'''
+Creating Customer Class that will be tied to active customer
+'''
+
 class Customer():
 
     def __init__(self, first_name, last_name, email, phone_number, city, state, postalZip, address):
@@ -12,6 +16,10 @@ class Customer():
         self.__postalZip = postalZip
         self.__address = address
         self.__is_active = False
+
+    '''
+    Getters for retreiving customer information
+    '''
 
     def get_full_name(self):
         return "{} {}".format(self.__first_name, self.__last_name)
