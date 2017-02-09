@@ -3,52 +3,52 @@ import sqlite3
 
 class PaymentMethod():
 
-    """Create A Payment Method the listed properties"""
+	"""Create A Payment Method the listed properties"""
 
-    def __init__(self, card_number, card_type, exp_date, cvv, name_on_card, client):
-        self.__name_on_card = name_on_card
-        self.__card_type = card_type
-        self.__card_number = card_number
-        self.__exp_date = exp_date
-        self.__cvv = cvv
-        self.__client= client
+	def __init__(self, card_number, card_type, exp_date, cvv, name_on_card, customer):
+		self.__name_on_card = name_on_card
+		self.__card_type = card_type
+		self.__card_number = card_number
+		self.__exp_date = exp_date
+		self.__cvv = cvv
+		self.__customer= customer
 
-    def get_name_on_card(self):
+	def get_name_on_card(self):
 
-        """return the name on the payment method"""
+		"""return the name on the payment method"""
 
-        return self.__name_on_card
+		return self.__name_on_card
 
-    def get_card_type(self):
+	def get_card_type(self):
 
-        """return the type(visa, mastercard, amex) of credit card on the payment method"""
+		"""return the type(visa, mastercard, amex) of credit card on the payment method"""
 
-    	return self.__card_type
+		return self.__card_type
 
-    def get_card_number(self):
+	def get_card_number(self):
 
-        """return the card number on the payment method"""
+		"""return the card number on the payment method"""
 
-        return self.__card_number
+		return self.__card_number
 
-    def get_exp_date(self):
+	def get_exp_date(self):
 
-        """return the expiration date on the payment method"""
+		"""return the expiration date on the payment method"""
 
-        return self.__exp_date
+		return self.__exp_date
 
-    def get_cvv(self):
-        
-        """return the cvv number on the back of the card on the payment method"""
+	def get_cvv(self):
+		
+		"""return the cvv number on the back of the card on the payment method"""
 
-        return self.__cvv
+		return self.__cvv
 
-    def get_client(self):
+	def get_customer(self):
 
-        '''return the client using the payment method'''
+		'''return the client using the payment method'''
 
-        return self.__client
+		return self.__customer
 
-        
+		
 
 
