@@ -63,3 +63,76 @@ class Customer():
         self.__is_active = False
         return self.__is_active
 
+
+    def register_customer(self, customer):
+        with sqlite3.connect("bangazon_cli.db") as bang:
+            cursor = bang.cursor()
+
+            try: 
+                cursor.execute("SELECT * FROM Customer")
+                customerss = cursor.fetchall()
+            except sqlite3.OperationalError:
+                cursor.execute("""
+                CREATE TABLE `Customers`
+                    (
+                        customer_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        first_name TEXT NOT NULL,
+                        last_name TEXT NOT NULL,
+                        email TEXT NOT NULL,
+                        phone_number TEXT NOT NULL,
+                        city TEXT NOT NULL,
+                        state TEXT NOT NULL,
+                        postal_zip INTEGER NOT NULL,
+                        address TEXT NOT NULL,
+                        is_active TEXT NOT NULL
+                    )
+                """)
+
+            cursor.execute("""
+            INSERT INTO Customers VALUES (null, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')
+            """.format(
+                        customer.get_first_name(), 
+                        customer.get_last_name(), 
+                        customer.get_email(), 
+                        customer.get_phone_number(),
+                        customer.get_city(),
+                        customer.get_state(),
+                        customer.get_postal_zip(),
+                        customer.get_address(),
+                        customer.get_active_status()
+                        )
+                    )
+        
+
+    def save_customer(self, customer):
+        with sqlite3.connect("bangazon_cli.db") as bang:
+            cursor = bang.cursor()
+
+            try:
+                cursor.execute("""
+                    SELECT * FROM Customer 
+                    WHERE first_name='{}'
+                    AND last_name='{}'
+                    AND email='{}'
+                    AND phone_number='{}'
+                    AND city='{}'
+                    AND state='{}'
+                    AND postal_zip='{}'
+                    AND address='{}'
+                    AND is_active='{}'
+                """.format(customer.get_first_name(), 
+                            customer.get_last_name(), 
+                            customer.get_email(), 
+                            customer.get_phone_number(),
+                            customer.get_city(),
+                            customer.get_state(),
+                            customer.get_postal_zip(),
+                            customer.get_address(),
+                            customer.get_active_status()))
+            except sqlite3.OperationalError:
+                return False
+
+            selected_customer = cursor.fetchall()
+            return len(selected_customer) == 1
+
+
