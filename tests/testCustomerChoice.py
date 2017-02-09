@@ -1,4 +1,4 @@
-git # Unit test to check that the user can view customers' active status
+ # Unit test to check that the user can view customers' active status
 # as well as set active status to "True" -ps
 
 import unittest
@@ -25,12 +25,14 @@ class user_can_choose_active_customer(unittest.TestCase):
 		print(pat.get_full_name(), pat.get_active_status())
 
 
-
 		# Test Pat's active status, which is True: 
 		self.assertTrue(pat.get_active_status())
 
 
+		# Test Pat's active status, which is True: 
+		self.assertTrue(pat.get_active_status())
 
+		
 
 if __name__ == "__main__":
 	unittest.main()
