@@ -55,3 +55,65 @@ class PaymentMethod():
 		return self.__customer.get_full_name()
 
 
+	def save(self, payment):
+		"""Method To Create A Table and Add Customer Information to The Rows"""
+		
+		with sqlite3.connect("bangazon_cli.db") as bang:
+			cursor = bang.cursor()
+
+			try: 
+				cursor.execute("SELECT * FROM PaymentMethods")
+				payments = cursor.fetchall()
+			except sqlite3.OperationalError:
+				cursor.execute("""
+				CREATE TABLE IF NOT EXISTS `PaymentMethods`
+					(
+						payment_method_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+						name_on_card TEXT NOT NULL,
+						card_type TEXT NOT NULL,
+						card_number TEXT NOT NULL,
+						exp_date TEXT NOT NULL,
+						cvv TEXT NOT NULL,
+						customer_fk INTEGER NOT NULL,
+						FOREIGN KEY(customer_fk) REFERENCES `Customers`(customer_id),
+						CONSTRAINT name_unique UNIQUE (name_on_card, card_type, card_number, exp_date, cvv)
+						)
+					""")
+
+			cursor.execute("""
+			INSERT INTO PaymentMethods VALUES (null, '{}', '{}', '{}', '{}', '{}', '{}')
+			""".format(
+						payment.get_name_on_card(), 
+						payment.get_card_type(), 
+						payment.get_card_number(), 
+						payment.get_exp_date(),
+						payment.get_cvv(),
+						payment.get_customer(),
+						)
+					)
+		
+
+	def payment_is_registered(self, payment):
+		with sqlite3.connect("bangazon_cli.db") as bang:
+			cursor = bang.cursor()
+
+			try:
+				cursor.execute("""
+					SELECT * FROM PaymentMethods 
+					WHERE name_on_card='{}'
+					AND card_type='{}'
+					AND card_number='{}'
+					AND exp_date='{}'
+					AND cvv='{}'
+					
+				""".format(payment.get_name_on_card(), 
+						payment.get_card_type(), 
+						payment.get_card_number(), 
+						payment.get_exp_date(),
+						payment.get_cvv(),
+						payment.get_customer()))
+			except sqlite3.OperationalError:
+				return False
+
+			selected_payment = cursor.fetchall()
+			return len(selected_payment) == 1
