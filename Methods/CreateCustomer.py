@@ -63,3 +63,49 @@ class Customer():
         self.__is_active = False
         return self.__is_active
 
+
+    def register_customer(self, customer):
+        """Method To Create A Table and Add Customer Information to The Rows"""
+        
+        with sqlite3.connect("bangazon_cli.db") as bang:
+            cursor = bang.cursor()
+
+            try: 
+                cursor.execute("SELECT * FROM Customers")
+                customers = cursor.fetchall()
+            except sqlite3.OperationalError:
+                cursor.execute("""
+                CREATE TABLE IF NOT EXISTS `Customers`
+                    (
+                        customer_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        first_name TEXT NOT NULL,
+                        last_name TEXT NOT NULL,
+                        email TEXT NOT NULL,
+                        phone_number TEXT NOT NULL,
+                        city TEXT NOT NULL,
+                        state TEXT NOT NULL,
+                        postal_zip INTEGER NOT NULL,
+                        address TEXT NOT NULL,
+                        is_active BOOLEAN NOT NULL,
+                        CONSTRAINT name_unique UNIQUE (first_name, last_name)
+                    )
+                """)
+
+            cursor.execute("""
+            INSERT INTO Customers VALUES (null, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')
+            """.format(
+                        customer.get_first_name(), 
+                        customer.get_last_name(), 
+                        customer.get_email(), 
+                        customer.get_phone_number(),
+                        customer.get_city(),
+                        customer.get_state(),
+                        customer.get_postal_zip(),
+                        customer.get_address(),
+                        customer.get_active_status()
+                        )
+                    )
+        
+
+
+
