@@ -4,6 +4,7 @@ sys.path.append("../")
 
 from Methods.CreateCustomer import Customer
 from Methods.CreateOrder import Order
+from Methods.CreatePaymentMethod import PaymentMethod
 
 class TestOrder(unittest.TestCase):
 	"""
@@ -33,11 +34,19 @@ class TestOrder(unittest.TestCase):
 			order_complete = False
 			)
 
+		self.payment = PaymentMethod(
+			card_number = "123456789",
+			card_type = "Visa",
+			exp_date = "04/20",
+			cvv = "123",
+			name_on_card = "Suzy B. Bishop",
+			customer = self.suzy
+			)
 
 	
 	def test_order_has_customer(self):
-		self.assertIsInstance(self.order, Order)
-		print(self.order.get_customer()) #Returns Customer Name (Suzy)
+		self.assertEqual("Suzy Bishop", self.order.get_customer_full_name()) #Returns Suzy Bishop
+		print(self.order.get_customer_full_name()) 
 
 
 	def test_order_complete(self):
@@ -50,6 +59,17 @@ class TestOrder(unittest.TestCase):
 		self.assertTrue(self.order.get_order_complete()) 
 		print("The order is complete", self.order.get_order_complete())
 		
+
+	def test_payment_has_customer(self):
+		self.assertEqual("Suzy Bishop", self.payment.get_customer_name()) #Return Suzy Bishop
+		print("Payment has Customer", self.payment.get_customer_name()) 
+
+
+	def test_customer_has_payment_card(self):
+		self.assertEqual("Visa", self.payment.get_card_type()) #Return Visa
+		print("Customer has Payment", self.payment.get_card_type()) 
+
+
 
 
 

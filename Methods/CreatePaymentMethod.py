@@ -50,5 +50,8 @@ class PaymentMethod():
 
 		return self.__customer
 
-		
+
+	def get_customer_name(self):
+		return self.__customer.get_full_name()
+
 
