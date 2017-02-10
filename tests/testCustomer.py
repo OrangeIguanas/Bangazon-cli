@@ -19,7 +19,7 @@ class TestCreateCustomer(unittest.TestCase):
 		'''
 		To test, use the "save" method to add to DB. You will need to Delete the function due to the Unique constraint before you assert true below. 
 		'''
-		#bob.save(bob)
+		# bob.save(bob)
 		self.assertTrue(Customer.customer_is_registered(bob))
 
 	def test_can_create_account(self):

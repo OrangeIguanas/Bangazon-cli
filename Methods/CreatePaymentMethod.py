@@ -106,11 +106,11 @@ class PaymentMethod():
 			try:
 				cursor.execute("""
 					SELECT * FROM PaymentMethods 
-					WHERE name_on_card='{}'
-					AND card_type='{}'
-					AND card_number='{}'
-					AND exp_date='{}'
-					AND cvv='{}'
+					WHERE name_on_card="{}"
+					AND card_type="{}"
+					AND card_number="{}"
+					AND exp_date="{}"
+					AND cvv="{}"
 					
 				""".format(payment.get_name_on_card(), 
 						payment.get_card_type(), 
