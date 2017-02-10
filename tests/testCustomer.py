@@ -15,10 +15,12 @@ class TestCreateCustomer(unittest.TestCase):
 
 		bob = Customer(first_name = "Bob", last_name="Bobbins", email="d@d.com", phone_number="615-999-1111",city = "Smyrna" , state = "Tennessee", postalZip = 37167, address = "111 Front Street")
 		Joe = Customer(first_name = "Joe", last_name="Mammy", address = "222 Back", city = "Smyrna", state = "Tennessee", postalZip = 38933, phone_number="625-444-4444", email="joe@mammy.com")
-		Customer.register_customer(self, bob)
-		Customer.register_customer(self, Joe)
-		
 
+		'''
+		To test, use the "save" method to add to DB. You will need to Delete the function due to the Unique constraint before you assert true below. 
+		'''
+
+		self.assertTrue(Customer.customer_is_registered(bob))
 
 	def test_can_create_account(self):
 		self.bob = Customer(first_name = "Bob", last_name="Bobbins", email="d@d.com", phone_number="615-999-1111",city = "Smyrna" , state = "Tennessee" , postalZip = 37167, address = "111 Front Street")
