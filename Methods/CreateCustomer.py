@@ -65,15 +65,17 @@ class Customer():
 
 
     def register_customer(self, customer):
+        """Method To Create A Table and Add Customer Information to The Rows"""
+        
         with sqlite3.connect("bangazon_cli.db") as bang:
             cursor = bang.cursor()
 
             try: 
                 cursor.execute("SELECT * FROM Customer")
-                customerss = cursor.fetchall()
+                customers = cursor.fetchall()
             except sqlite3.OperationalError:
                 cursor.execute("""
-                CREATE TABLE `Customers`
+                CREATE TABLE IF NOT EXISTS `Customers`
                     (
                         customer_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                         first_name TEXT NOT NULL,
@@ -84,7 +86,7 @@ class Customer():
                         state TEXT NOT NULL,
                         postal_zip INTEGER NOT NULL,
                         address TEXT NOT NULL,
-                        is_active TEXT NOT NULL
+                        is_active BOOLEAN NOT NULL
                     )
                 """)
 
@@ -104,35 +106,5 @@ class Customer():
                     )
         
 
-    def save_customer(self, customer):
-        with sqlite3.connect("bangazon_cli.db") as bang:
-            cursor = bang.cursor()
-
-            try:
-                cursor.execute("""
-                    SELECT * FROM Customer 
-                    WHERE first_name='{}'
-                    AND last_name='{}'
-                    AND email='{}'
-                    AND phone_number='{}'
-                    AND city='{}'
-                    AND state='{}'
-                    AND postal_zip='{}'
-                    AND address='{}'
-                    AND is_active='{}'
-                """.format(customer.get_first_name(), 
-                            customer.get_last_name(), 
-                            customer.get_email(), 
-                            customer.get_phone_number(),
-                            customer.get_city(),
-                            customer.get_state(),
-                            customer.get_postal_zip(),
-                            customer.get_address(),
-                            customer.get_active_status()))
-            except sqlite3.OperationalError:
-                return False
-
-            selected_customer = cursor.fetchall()
-            return len(selected_customer) == 1
 
 

@@ -2,21 +2,26 @@ import unittest
 import sys
 sys.path.append("../")
 
-'''
-Test to make sure that customer can be created, and that none of the properties on customer are None
-'''
+
 from Methods.CreateCustomer import Customer
 
 class TestCreateCustomer(unittest.TestCase):
 
-	def test_can_save_to_data_base(self):
-		self.bob = Customer(first_name = "Bob", last_name="Bobbins", address = "111 Front Street", city = "Smyrna" , state = "Tennessee" , postalZip = 37167, phone_number="615-999-1111", email="d@d.com")
-		Customer.register_customer(self, self.bob)
+	def test_can_register_to_database(self):
+		"""
+		Test that we can Create database and Add users to a dataBase
 
+		"""
+
+		bob = Customer(first_name = "Bob", last_name="Bobbins", email="d@d.com", phone_number="615-999-1111",city = "Smyrna" , state = "Tennessee", postalZip = 37167, address = "111 Front Street")
+		Joe = Customer(first_name = "Joe", last_name="Mammy", address = "222 Back", city = "Smyrna", state = "Tennessee", postalZip = 38933, phone_number="625-444-4444", email="joe@mammy.com")
+		Customer.register_customer(self, bob)
+		Customer.register_customer(self, Joe)
+		
 
 
 	def test_can_create_account(self):
-		self.bob = Customer(first_name = "Bob", last_name="Bobbins", address = "111 Front Street", city = "Smyrna" , state = "Tennessee" , postalZip = 37167, phone_number="615-999-1111", email="d@d.com")
+		self.bob = Customer(first_name = "Bob", last_name="Bobbins", email="d@d.com", phone_number="615-999-1111",city = "Smyrna" , state = "Tennessee" , postalZip = 37167, address = "111 Front Street")
 		print(self.bob.get_full_name())
 		
 		self.assertIsInstance(self.bob, Customer)
