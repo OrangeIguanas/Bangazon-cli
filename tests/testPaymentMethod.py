@@ -91,7 +91,16 @@ class TestPaymentMethod(unittest.TestCase):
 							   name_on_card="Bob Bobbins", 
 							   customer=self.bob.get_last_name()
 							   )
+		'''
+		uncomment 98
+		'''
+
 		# self.visa_card.save(self.visa_card)
+
+		'''
+		comment out until UNIQUE error displays. Then uncomment 104 and comment out 97
+		'''
+
 		self.assertTrue(self.visa_card.payment_is_registered(self.visa_card))			
 
 if __name__ == "__main__":

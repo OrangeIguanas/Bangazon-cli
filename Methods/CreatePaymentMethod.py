@@ -54,9 +54,12 @@ class PaymentMethod():
 	def get_customer_name(self):
 		return self.__customer.get_full_name()
 
+	'''
+	Creates database table with payment method properties
+	'''
 
 	def save(self, payment):
-		"""Method To Create A Table and Add Customer Information to The Rows"""
+	
 		
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
@@ -92,7 +95,10 @@ class PaymentMethod():
 						)
 					)
 		
-
+	'''
+	Check if information is stored in database
+	'''
+	
 	def payment_is_registered(self, payment):
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
