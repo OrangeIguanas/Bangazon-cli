@@ -87,7 +87,7 @@ class Customer():
                         postal_zip INTEGER NOT NULL,
                         address TEXT NOT NULL,
                         is_active BOOLEAN NOT NULL,
-                        unique (first_name, last_name, email, phone_number, city, state, postal_zip, address)
+                        CONSTRAINT name_unique UNIQUE (first_name, last_name)
                     )
                 """)
 
