@@ -71,7 +71,7 @@ class Customer():
             cursor = bang.cursor()
 
             try: 
-                cursor.execute("SELECT * FROM Customer")
+                cursor.execute("SELECT * FROM Customers")
                 customers = cursor.fetchall()
             except sqlite3.OperationalError:
                 cursor.execute("""
@@ -86,7 +86,8 @@ class Customer():
                         state TEXT NOT NULL,
                         postal_zip INTEGER NOT NULL,
                         address TEXT NOT NULL,
-                        is_active BOOLEAN NOT NULL
+                        is_active BOOLEAN NOT NULL,
+                        unique (first_name, last_name, email, phone_number, city, state, postal_zip, address)
                     )
                 """)
 
