@@ -18,5 +18,3 @@ conn.commit()
 
 conn.close()
 
-# for row in c.execute('SELECT * FROM Customers ORDER BY customer_id'):
-# 	print row
