@@ -9,7 +9,7 @@ from Methods.CreateCustomer import Customer
 
 class TestPaymentMethod(unittest.TestCase):
 
-	"""Test if we can create a payment method"""
+# 	"""Test if we can create a payment method"""
 
 	def test_can_create_payment_method(self):
 		
@@ -28,7 +28,7 @@ class TestPaymentMethod(unittest.TestCase):
 
 	def test_payment_method_required_properties(self):
 
-		"""Test if our payment method has required properties"""
+# 		"""Test if our payment method has required properties"""
 
 		self.visa_card = PaymentMethod(card_number="4267520023493346", 
 									   card_type="Visa", 
@@ -50,7 +50,7 @@ class TestPaymentMethod(unittest.TestCase):
 		
 	def test_can_get_value_from_customer_class(self):
 
-		"""Test if our payment method contains a specific value (last name) from the customer class"""
+# 		"""Test if our payment method contains a specific value (last name) from the customer class"""
 
 		self.bob = Customer(first_name = "Bob", 
 							last_name="Bobbins", 
@@ -91,17 +91,41 @@ class TestPaymentMethod(unittest.TestCase):
 							   name_on_card="Bob Bobbins", 
 							   customer=self.bob.get_last_name()
 							   )
-		'''
-		uncomment 98
-		'''
+	# 	'''
+	# 	uncomment 98
+	# 	'''
 
-		# self.visa_card.save(self.visa_card)
+	# 	self.visa_card.save(self.visa_card)
 
-		'''
-		comment out until UNIQUE error displays. Then uncomment 104 and comment out 97
-		'''
+	# 	'''
+	# 	comment out until UNIQUE error displays. Then uncomment 104 and comment out 97
+	# 	'''
 
-		self.assertTrue(self.visa_card.payment_is_registered(self.visa_card))			
+	# 	self.assertTrue(self.visa_card.payment_is_registered(self.visa_card))
+
+	# This is the test for getting the required Payment Method information. 
+	def test_get_payment_name_and_number(self): 
+		# First, build instances of Customer and Payment Method
+		self.bob = Customer(first_name = "Bob", 
+						last_name="Bobbins", 
+						address = "111 Front Street", 
+						city = "Smyrna" , 
+						state = "Tennessee" , 
+						postalZip = 37167, 
+						phone_number="615-999-1111", 
+						email="d@d.com"
+						)		
+
+		self.visa_card = PaymentMethod(card_number="4267520023493346", 
+		   card_type="Visa", 
+		   exp_date="07/20", 
+		   cvv="333", 
+		   name_on_card="Bob Bobbins", 
+		   customer=self.bob
+		   )
+		# Print the function and pass in visa_card as its argument
+		print("getter", self.visa_card.get_payment_method(self.visa_card))
+
 
 if __name__ == "__main__":
 	unittest.main()
