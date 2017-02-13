@@ -114,15 +114,15 @@ class Customer():
             try:
                 cursor.execute("""
                     SELECT * FROM Customers 
-                    WHERE first_name='{}'
-                    AND last_name='{}'
-                    AND email='{}'
-                    AND phone_number='{}'
-                    AND city='{}'
-                    AND state='{}'
-                    AND postal_zip='{}'
-                    AND address='{}'
-                    AND is_active='{}'
+                    WHERE first_name="{}"
+                    AND last_name="{}"
+                    AND email="{}"
+                    AND phone_number="{}"
+                    AND city="{}"
+                    AND state="{}"
+                    AND postal_zip="{}"
+                    AND address="{}"
+                    AND is_active="{}"
                 """.format(customer.get_first_name(), 
                             customer.get_last_name(), 
                             customer.get_email(), 
