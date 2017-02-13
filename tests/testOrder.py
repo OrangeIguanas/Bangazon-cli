@@ -57,7 +57,7 @@ class TestOrder(unittest.TestCase):
 
 	# ADD SUZY TO DB
 	# def test_customer_to_database(self):
-	# 	self.suzy.customer_is_registered(self.suzy)
+	# 	self.suzy.save(self.suzy)
 	
 	def test_order_has_customerId(self):
 		self.assertEqual(2, self.suzy.get_customer_id(self.suzy))
