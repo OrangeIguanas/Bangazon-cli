@@ -91,7 +91,7 @@ class Customer():
 				""")
 
 			cursor.execute("""
-			INSERT INTO Customers VALUES (null, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')
+			INSERT INTO Customers VALUES (null, "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")
 			""".format(
 						customer.get_first_name(), 
 						customer.get_last_name(), 
@@ -137,7 +137,7 @@ class Customer():
 			selected_customer = cursor.fetchall()
 			return len(selected_customer) == 1
 
-			
+
 
 	def get_customer_id(self, customer):
 		"""Method To Create A Table and Add Customer Information to The Rows"""
