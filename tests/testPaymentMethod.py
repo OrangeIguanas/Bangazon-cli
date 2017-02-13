@@ -72,6 +72,36 @@ class TestPaymentMethod(unittest.TestCase):
 
 		print(self.visa_card.get_customer())
 
+	def test_payment_method_is_added_to_database(self):
+
+		self.bob = Customer(first_name = "Bob", 
+							last_name="Bobbins", 
+							address = "111 Front Street", 
+							city = "Smyrna" , 
+							state = "Tennessee" , 
+							postalZip = 37167, 
+							phone_number="615-999-1111", 
+							email="d@d.com"
+							)		
+
+		self.visa_card = PaymentMethod(card_number="4267520023493346", 
+							   card_type="Visa", 
+							   exp_date="07/20", 
+							   cvv="333", 
+							   name_on_card="Bob Bobbins", 
+							   customer=self.bob.get_last_name()
+							   )
+		'''
+		uncomment 98
+		'''
+
+		# self.visa_card.save(self.visa_card)
+
+		'''
+		comment out until UNIQUE error displays. Then uncomment 104 and comment out 97
+		'''
+
+		self.assertTrue(self.visa_card.payment_is_registered(self.visa_card))			
 
 if __name__ == "__main__":
 	unittest.main()
