@@ -78,11 +78,22 @@ while True:
     elif choice == 2:
       for x in Customer.get_customers():
         print(x[0], x[1], x[2])
-        newChoice = int(input()) 
-        if newChoice == x[0]:
-          print("doing it" , newChoice)
-          print("this", x[0])
-          Customer.update_customer_status(x[0], True)
+      # input("Press enter, then input the id number of the customer you want to make 'active'.")
+      newChoice = int(input()) 
+      # coolBro = Customer.get_customers()[newChoice -1] 
+        # if newChoice == x[0]:
+        #   print("doing it" , newChoice)
+        #   print("this", x[0])
+         
+      with sqlite3.connect("bangazon_cli.db") as bang:
+        cursor = bang.cursor()
+
+       
+        cursor.execute("UPDATE Customers SET is_active = 'false' WHERE customer_id = '{}'".format(newChoice -1))
+        # except:
+        #   print("except")
+
+        
 
 
 
