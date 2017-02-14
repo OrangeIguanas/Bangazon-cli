@@ -72,6 +72,7 @@ class Customer():
 			try: 
 				cursor.execute("SELECT * FROM Customers")
 				customers = cursor.fetchall()
+
 			except sqlite3.OperationalError:
 				cursor.execute("""
 				CREATE TABLE IF NOT EXISTS `Customers`
@@ -130,7 +131,9 @@ class Customer():
 							customer.get_state(),
 							customer.get_postal_zip(),
 							customer.get_address(),
-							customer.get_active_status()))
+							customer.get_active_status()
+						)
+				)
 			except sqlite3.OperationalError:
 				return False
 

@@ -4,12 +4,13 @@ Initilizing Product class
 '''
 class Product():
 
-	def __init__(self, name, price, qty, description, category):
+	def __init__(self, name, price, qty, description, category, customer):
 		self.__name = name
 		self.__price = price
 		self.__description = description
 		self.__qty = qty
 		self.__category = category
+		self.__customer = customer
 
 
 	'''
@@ -31,6 +32,9 @@ class Product():
 	def get_category(self):
 		return self.__category
 
+	def get_customer(self):
+		return self.__customer
+
 # Method to create a products table and rows in the database -ps
 	def register_product(self, product): 
 		# Link method to the database
@@ -49,20 +53,23 @@ class Product():
 					price INTEGER NOT NULL, 
 					description TEXT NOT NULL, 
 					qty INTEGER NOT NULL, 
-					category_id INTEGER NOT NULL, 
+					category_id INTEGER NOT NULL,
+					customer INTEGER NOT NULL, 
 					FOREIGN KEY (`category_id`) REFERENCES `Category`(`category_id`),
+					FOREIGN KEY (`customer`) REFERENCES `Customer`(`customer_id`),
 					CONSTRAINT name_unique UNIQUE (name)
 					
 					)
 				""")
 			cursor.execute(""" 
-			INSERT INTO Products VALUES (null, "{}", "{}", "{}", "{}", "{}")
+			INSERT INTO Products VALUES (null, "{}", "{}", "{}", "{}", "{}", "{}")
 				""".format(
 								product.get_name(), 
 								product.get_price(), 
 								product.get_description(), 
 								product.get_qty(), 
-								product.get_category()
+								product.get_category(),
+								customer.get_customer_id(customer)
 								)
 							)
 	# Use update to allow multiples of a single product, with the quantity field 
@@ -77,4 +84,3 @@ class Product():
 				SET qty = qty + 1
 				WHERE name = name
 				""")
-					

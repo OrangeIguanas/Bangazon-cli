@@ -16,8 +16,6 @@ class Order():
 		self.__payment = payment
 		self.__order_complete = False
 
-
-
 	def get_customer_full_name(self):
 		return self.__customer.get_full_name()
 
@@ -29,7 +27,6 @@ class Order():
 		return self.__order_complete
 
 
-
 	def create_order(self, customer):
 		# customer - is this a class or a tuple?
 		# when a product has been added, an order is created
@@ -39,11 +36,13 @@ class Order():
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
 
-			try: cursor.execute("SELECT * FROM Order")
-				users = cursor.fetch_all()
-			except: OperationalError:
+			try: 
+				cursor.execute("SELECT * FROM Order")
+				orders = cursor.fetchall()
+			   
+			except sqlite3.OperationalError:
 				cursor.execute("""
-					CREATE TABLE IF NOT EXSISTS `Order`
+				CREATE TABLE IF NOT EXSISTS `Order`
 					(
 						order_id INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,
 						customer_id INTEGER NOT NULL,
@@ -53,13 +52,8 @@ class Order():
 				""")
 
 				cursor.execute("""
-					INSERT INTO Order VALUES(null, "{}", "{}")
+				INSERT INTO Order VALUES(null, "{}", "{}")
 					""".format(
 						customer.get_customer_id(), #there needs to be a getter for the FK
 						customer.get_payment_id(), #there needs to be a getter for the FK
 						customer.get_order_complete()))
-
-
-
-
-

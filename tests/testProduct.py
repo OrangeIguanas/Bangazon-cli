@@ -29,7 +29,7 @@ class ProductTest(unittest.TestCase):
 	def test_can_create_product(self):
 
 
-		lazer = Product(name = "lazer", price = 13.00, qty = 15, description = "You already know" , category = "Lazer")
+		lazer = Product(name = "lazer", price = 13.00, qty = 15, description = "You already know" , category = "Lazer" , customer = "")
 		
 		self.assertIsInstance(lazer, Product)
 

@@ -141,11 +141,5 @@ class PaymentMethod():
 				# return specified data
 				return data
 			# Add exception message in case of database connection issue
-			except: sqlite3.OperationalError
-			print("Operation Error, jerk.")
-
-
-
-
-
-
+			except sqlite3.OperationalError:
+				print("Operation Error, jerk.")
