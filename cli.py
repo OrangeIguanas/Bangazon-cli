@@ -52,31 +52,20 @@ while True:
       """)
   # Store input values to pass as parameters in a new Customer argument 
   try:
+
     choice = int(input(">"))
+
     if choice == 1: 
-      print("Enter first name:")
-      fName = input() 
-      print("Enter last name:")
-      lName = input() 
-      print("Email?")
-      email = input() 
-      print("Can I get your number?")
-      phone = input() 
-      print("Enter Address")
-      address = input()
-      print("Enter Zip Code:")
-      zipCode = input()
-      print("Enter City")
-      city = input()
-      print("Enter State")
-      state = input()
-      # Instantiate new Customer
-      newCustomer = Customer(fName, lName, email, phone, city, state, zipCode, address)
-      # Store new Customer in DB via save method
-      newCustomer.save(newCustomer)
-      print(newCustomer.get_full_name())
-    elif choice == 2: 
-      print("1" + Customer.get_customers()[0].__first_name)
+
+      Customer.add_new()
+      
+    elif choice == 2:
+
+      Customer.change_status()
+
+
+        
+
 
 
 
