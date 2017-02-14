@@ -76,9 +76,11 @@ while True:
       newCustomer.save(newCustomer)
       print(newCustomer.get_full_name())
     elif choice == 2: 
+      print("1" + Customer.get_customers()[0].__first_name)
 
 
-      
+
+
   except ValueError: 
       print("ERROR")
 

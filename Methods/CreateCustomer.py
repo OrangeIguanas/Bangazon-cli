@@ -157,3 +157,18 @@ class Customer():
 			except sqlite3.OperationalError:
 				print("NOPE.")
 
+	def get_customers(): 
+		with sqlite3.connect("bangazon_cli.db") as bang:
+			cursor = bang.cursor()
+
+			try: 
+				cursor.execute("SELECT * FROM Customers")
+				data = cursor.fetchall()
+				# print("RETURNING CUSTOMER FROM FETCHALL", data)
+				# print("RETURNING CUSTOMER FROM FETCHALL", data)
+				return data
+				
+
+			except sqlite3.OperationalError:
+				print("NOPE.")
+
