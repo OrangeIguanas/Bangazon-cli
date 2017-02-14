@@ -1,5 +1,5 @@
 from Methods.CreateCustomer import *
-
+# This is the CLI for interacting with our DB
 print("""\
 .----.   .--.  .-. .-. .---.   .--.  .---.  .----. .-. .-.
 | {}  } / {} \ |  `| |/   __} / {} \{_   / /  {}  \|  `| |
@@ -34,6 +34,7 @@ print("""
 firstPage = input("Hello client developer! I am Bangazon the Centaur. I will be your virtual guide.")
 nextPage = input("Press Enter to begin your journey.")
 
+# Initiate a loop 
 while True: 
 
   print(""" Enter a Number: 
@@ -49,6 +50,7 @@ while True:
       6.     See product Popularity
       7.     Leave Bangazon
       """)
+  # Store input values to pass as parameters in a new Customer argument 
   try:
     choice = int(input(">"))
     if choice == 1: 
@@ -68,13 +70,15 @@ while True:
       city = input()
       print("Enter State")
       state = input()
+      # Instantiate new Customer
       newCustomer = Customer(fName, lName, email, phone, city, state, zipCode, address)
+      # Store new Customer in DB via save method
       newCustomer.save(newCustomer)
       print(newCustomer.get_full_name())
     elif choice == 2: 
+
+
       
-
-
   except ValueError: 
       print("ERROR")
 
