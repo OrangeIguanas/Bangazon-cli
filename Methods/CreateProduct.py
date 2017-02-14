@@ -4,12 +4,12 @@ Initilizing Product class
 '''
 class Product():
 
-	def __init__(self, name, price, qty, description, category):
+	def __init__(self, name, price, qty, description, category_id):
 		self.__name = name
 		self.__price = price
 		self.__description = description
 		self.__qty = qty
-		self.__category = category
+		self.__category_id = category_id
 
 
 	'''
@@ -28,8 +28,8 @@ class Product():
 	def get_description(self):
 		return self.__description
 
-	def get_category(self):
-		return self.__category
+	def get_category_id(self):
+		return self.__category_id
 
 # Method to create a products table and rows in the database -ps
 	def register_product(self, product): 
@@ -62,7 +62,7 @@ class Product():
 								product.get_price(), 
 								product.get_description(), 
 								product.get_qty(), 
-								product.get_category()
+								3
 								)
 							)
 	# Use update to allow multiples of a single product, with the quantity field 
@@ -74,7 +74,7 @@ class Product():
 			# each time) and give a condition "WHERE" 
 			cursor.execute("""
 				UPDATE Products
-				SET qty = qty + 1
+				SET qty = qty - 1
 				WHERE name = name
 				""")
 					

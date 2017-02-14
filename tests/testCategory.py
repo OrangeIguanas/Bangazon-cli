@@ -1,23 +1,24 @@
-# This is a test to ensure that categories is being created with required properties
 import unittest 
 import sys 
 sys.path.append('../') 
-# import the Category class for testing
+
+
 from Methods.CreateCategory import Category 
 
 class TestCategory(unittest.TestCase): 
-# Test for an instance of category with a name value 
-	def test_can_create_a_category(self): 
 
-		food = Category(category_name= "Food")
-		self.assertIsInstance(food, Category)
-		# print the result 
-		print(food.get_category_name())
+	@classmethod
+	def setUpClass(self):
+		self.food = Category(
+			category_name = "Food")
+
+
+	def test_can_create_a_category(self): 
+		self.assertIsInstance(self.food, Category)
 
 	def test_can_register_category_to_database(self):
-		food = Category(category_name = "Food")
-		food.save_category(food)
-		self.assertTrue(Category.category_is_registered(food))
+		self.food.save_category(self.food)
+		self.assertTrue(Category.category_is_registered(self.food))
 
 
 	def test_category_has_product(self):
