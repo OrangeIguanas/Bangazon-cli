@@ -34,7 +34,7 @@ class ProductTest(unittest.TestCase):
 		#Testing if the bazooka object is a Product
 		self.assertIsInstance(self.Bazooka, Product)
 		print(self.Bazooka.get_description())
-		print(self.Bazooka.get_category_id())
+		
 
 	def test_can_register_product_to_database(self):
 		# Testing if the Bazooka object contains the foreign key for the weapons category
@@ -57,6 +57,8 @@ class ProductTest(unittest.TestCase):
 		self.assertIsNotNone(self.Bazooka.get_description())
 		self.assertIsNotNone(self.Bazooka.get_category_id())
 
+	def test_can_get_category_id(self):
+		self.assertEqual(1, self.weapons.get_category_id(self.weapons)) 
 
 
 if __name__ == '__main__':

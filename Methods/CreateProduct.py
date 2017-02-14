@@ -62,7 +62,7 @@ class Product():
 								product.get_price(), 
 								product.get_description(), 
 								product.get_qty(), 
-								3
+								1
 								)
 							)
 
