@@ -22,7 +22,7 @@ class TestCategory(unittest.TestCase):
 
 
 	def test_category_has_product(self):
-		pass
+		
 
 
 		

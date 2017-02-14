@@ -39,8 +39,9 @@ class ProductTest(unittest.TestCase):
 	def test_can_register_product_to_database(self):
 		#Testing if the Bazooka object contains the foreign key for the weapons category
 		# Bazooka(Product) is reliant upon weapons(Category) so it must be created to the database first
-		self.weapons.save_category(self.weapons)
-		self.Bazooka.register_product(self.Bazooka)
+		# self.weapons.save_category(self.weapons)
+		# self.Bazooka.register_product(self.Bazooka)
+		self.assertTrue(Product.product_is_registered(self.Bazooka))
 
 	
 	def test_can_update_product_qty_when_a_user_adds_to_their_cart(self):

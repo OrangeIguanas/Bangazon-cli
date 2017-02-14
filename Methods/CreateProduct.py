@@ -65,6 +65,22 @@ class Product():
 								3
 								)
 							)
+
+	def product_is_registered(product):
+		with sqlite3.connect("bangazon_cli.db") as bang:
+			cursor = bang.cursor()
+
+			try:
+				cursor.execute("""
+					SELECT * FROM Products 
+					WHERE name='{}'
+				""".format(product.get_name()))
+			except sqlite3.OperationalError:
+				return False
+
+			selected_product = cursor.fetchall()
+			return len(selected_product) == 1	
+			
 	# Use update to allow multiples of a single product, with the quantity field 
 	# reflecting the update -ps
 	def update_product(self, name, qty): 
