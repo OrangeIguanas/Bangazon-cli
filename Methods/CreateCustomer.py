@@ -156,3 +156,4 @@ class Customer():
 
 			except sqlite3.OperationalError:
 				print("NOPE.")
+
