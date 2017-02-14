@@ -30,10 +30,7 @@ class Order():
 		self.__order_complete = True
 		return self.__order_complete
 
-
-	def create_order(self, order, customer):
-		# when a product has been added, an order is created
-		# select active customer, on customer class - we need to know the id
+	def create_order(self, customer):
 
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
@@ -57,7 +54,6 @@ class Order():
 			# There needs to be a getter for payment_id. 
 			# While order complete == False, the order is not complete
 			# order_id, customer_id, payment_id, order_complete
-
 			cursor.execute("""
 				INSERT INTO CustomerOrder VALUES (null, "{}", "{}", "{}")
 				""".format(
