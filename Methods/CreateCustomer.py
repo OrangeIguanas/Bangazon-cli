@@ -140,17 +140,20 @@ class Customer():
 
 
 	def get_customer_id(self, customer):
-		"""Method To Create A Table and Add Customer Information to The Rows"""
-		print("CUSTOMER", customer.get_last_name())
+		"""Method To return the Customer's ID"""
 
+		# connect to the database
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
 
 			try: 
-				cursor.execute("SELECT * FROM Customers c WHERE c.last_name ='{}'".format(customer.get_last_name()))
+				# select customer_id that matches the customer's phone number
+				cursor.execute("SELECT customer_id FROM Customers c WHERE c.phone_number ='{}'".format(customer.get_phone_number()))
+
+				# return the data
 				data = cursor.fetchall()
-				print("RETURNING CUSTOMER FROM FETCHALL", data)
-				print("RETURNING CUSTOMER FROM FETCHALL", data[0][0])
+				
+				print("Customer_id", data[0][0])
 				return data[0][0]
 				
 
