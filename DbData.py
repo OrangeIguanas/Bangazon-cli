@@ -10,15 +10,15 @@ categories = [(1, 'Appliances'), (2, 'Video Games'), (3, 'Weapondry'), (4, 'Pool
 
 products = [(1, 'Boomarang', 4.00, 'Throw and It will Return!', 15, 3), (2, 123.99, 'Whippinator', 1), (3, 69.99,  'Madden 09', 2 ), (4, 3.00,  'Pool Noodle', 4), (5, 100.00 , 'Dickbutt', 5)]
 
-# c.executemany('INSERT INTO Customers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', customers)
+c.executemany('INSERT INTO Customers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', customers)
 
-# c.execute('SELECT * FROM Customers')
-# print(c.fetchall())
+c.execute('SELECT * FROM Customers')
+print(c.fetchall())
 
-# c.executemany('INSERT INTO Categories VALUES (? , ?)', categories )
+c.executemany('INSERT INTO Categories VALUES (? , ?)', categories )
 
-# c.execute('SELECT * FROM Categories')
-# print(c.fetchall())
+c.execute('SELECT * FROM Categories')
+print(c.fetchall())
 
 
 c.executemany('INSERT INTO Products VALUES (? , ? , ? , ? , ?, ?)', [(1, "Boomarang", 4, "Throw and It will Return!", 15, 3), (2, "Whippinator", 5, "A Whip for Whipped Cream", 12,  1), (3, "Madden 09", 69, "Video Game that is Awesome?", 23, 2 ), (4, "Pool Noodle", 3, "Noodling in the Pool", 100, 4), (5, "Dickbutt", 1000, "Dickbutt needs no description", 1,  5)] )
