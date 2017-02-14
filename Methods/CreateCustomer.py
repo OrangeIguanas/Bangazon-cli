@@ -175,3 +175,11 @@ class Customer():
 			except sqlite3.OperationalError:
 				print("NOPE.")
 
+	def update_customer_status(customer, bool):
+		with sqlite3.connect("bangazon_cli.db") as bang:
+			cursor = bang.cursor()
+
+			try:
+				cursor.execute("UPDATE Customers SET is_active = bool WHERE customer_id = '{}'".format(get_customer_id(customer)))
+			except:
+				pass

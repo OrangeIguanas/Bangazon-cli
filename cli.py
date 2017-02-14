@@ -75,8 +75,15 @@ while True:
       # Store new Customer in DB via save method
       newCustomer.save(newCustomer)
       print(newCustomer.get_full_name())
-    elif choice == 2: 
-      print("1" + Customer.get_customers()[0].__first_name)
+    elif choice == 2:
+      for x in Customer.get_customers():
+        print(x[0], x[1], x[2])
+        newChoice = int(input()) 
+        if newChoice == x[0]:
+          print("doing it" , newChoice)
+          print("this", x[0])
+          Customer.update_customer_status(x[0], True)
+
 
 
 
