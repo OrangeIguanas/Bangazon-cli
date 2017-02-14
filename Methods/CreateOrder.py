@@ -30,6 +30,7 @@ class Order():
 		self.__order_complete = True
 		return self.__order_complete
 
+
 	def create_order(self, customer):
 
 		with sqlite3.connect("bangazon_cli.db") as bang:
@@ -103,5 +104,7 @@ class Order():
 			# order_id, customer_id, payment_id, T/F 
 			data = cursor.fetchall()
 			return data[0][3]
+
+	
 
 

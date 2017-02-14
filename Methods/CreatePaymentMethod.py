@@ -123,3 +123,29 @@ class PaymentMethod():
 
 			selected_payment = cursor.fetchall()
 			return len(selected_payment) == 1
+
+	# This is a getter for two values of PaymentMethod, card type and card number
+	def get_payment_method(self, payment_method): 
+		# print("Card Type:", payment_method.get_card_type())
+		# print("Payment Types Id:", payment_method.get_card_number())
+
+		with sqlite3.connect("bangazon_cli.db") as bang: 
+			cursor = bang.cursor() 
+
+			try: 
+				# Specify rows
+				cursor.execute("SELECT card_type, card_number FROM PaymentMethods")
+				# fetch multiple rows and store as data value: 
+				data = cursor.fetchall()
+				print("Card Type and Card Number", data)
+				# return specified data
+				return data
+			# Add exception message in case of database connection issue
+			except: sqlite3.OperationalError
+			print("Operation Error, jerk.")
+
+
+
+
+
+
