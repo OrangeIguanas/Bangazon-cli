@@ -31,7 +31,7 @@ class Order():
 		return self.__order_complete
 
 
-	def create_order(self, customer):
+	def create_order(self, order, customer):
 
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
