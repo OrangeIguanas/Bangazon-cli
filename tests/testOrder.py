@@ -12,6 +12,7 @@ class TestOrder(unittest.TestCase):
 	Author: Abby
 	Tests: 
 		test_order_has_customerId
+		test_order_has_orderId
 		test_order_has_customer
 		test_order_complete
 		test_set_order_to_complete
@@ -36,7 +37,7 @@ class TestOrder(unittest.TestCase):
 			exp_date = "04/20",
 			cvv = "123",
 			name_on_card = "Suzy B. Bishop",
-			customer = self.suzy
+			customer = self.suzy #foreign-key to customer
 			)
 
 
@@ -45,41 +46,40 @@ class TestOrder(unittest.TestCase):
 			payment = self.payment, #foreign-key to payment
 			order_complete = False
 			)
-
-
-	# double check to make sure Suzy is going to the database
-	# create a getter that returns Suzy's customer_id in Customer
-	# write a method that makes a call to the database and returns the row
-	# print the returned data
-	# to check what type isInstance types.TypeType
-	# when entering values into the database, double quotes "{}" are needed, not single quotes '{}'
 	
 
-	# ADD SUZY TO DB
-	# def test_customer_to_database(self):
-	# 	self.suzy.save(self.suzy)
-	
+
+	#ADD SUZY TO DB
+		#self.suzy.save(self.suzy)
+
+	#ADD NEW ORDER
+	# def test_create_order_database(self):
+	# 	self.order.create_order(self.order, self.suzy)
+
 	def test_order_has_customerId(self):
-		self.assertEqual(2, self.suzy.get_customer_id(self.suzy))
+		# Test to see if Suzy's customer_id is 1
+		self.assertEqual(1, self.suzy.get_customer_id(self.suzy))
+
+	def test_order_has_orderId(self):
+		# Test to see if Suzy's order_id is 1
+		self.assertEqual(1, self.order.get_order_id(self.order, self.suzy))
 
 	def test_order_has_customer(self):
+		# Test to see if get_customer_full_name returns the full name
 		self.assertEqual("Suzy Bishop", self.order.get_customer_full_name()) #Returns Suzy Bishop
-		print("Customer: ", self.order.get_customer_full_name()) 
+		print("Customer", self.order.get_customer_full_name()) 
 
-	def test_order_complete(self):
+	def test_order_is_not_complete(self):
+		# Test to see if the order is complete
 		self.assertFalse(self.order.get_order_complete())
-		print("The order is not complete")
+		print("Order Not Complete", self.order.get_order_complete())
 
 	def test_set_order_to_complete(self):
-		self.order.set_order_to_completed()
-		self.assertTrue(self.order.get_order_complete()) 
-		print("The order is complete", self.order.get_order_complete())
+		#self.order.order_is_complete(self.order, self.suzy)
+		self.assertTrue(self.order.order_is_complete(self.order, self.suzy)) 
+		print("Order Complete")
 
-	# def test_create_order(self):
-	# 	self.order.create_order()
-	# 	self.assertEqual()
-
-
+		
 
 if __name__ == "__main__":
 	unittest.main()
