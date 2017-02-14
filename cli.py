@@ -52,46 +52,17 @@ while True:
       """)
   # Store input values to pass as parameters in a new Customer argument 
   try:
-    choice = int(input(">"))
-    if choice == 1: 
-      print("Enter first name:")
-      fName = input() 
-      print("Enter last name:")
-      lName = input() 
-      print("Email?")
-      email = input() 
-      print("Can I get your number?")
-      phone = input() 
-      print("Enter Address")
-      address = input()
-      print("Enter Zip Code:")
-      zipCode = input()
-      print("Enter City")
-      city = input()
-      print("Enter State")
-      state = input()
-      # Instantiate new Customer
-      newCustomer = Customer(fName, lName, email, phone, city, state, zipCode, address)
-      # Store new Customer in DB via save method
-      newCustomer.save(newCustomer)
-      print(newCustomer.get_full_name())
-    elif choice == 2:
-      for x in Customer.get_customers():
-        print(x[0], x[1], x[2])
-      # input("Press enter, then input the id number of the customer you want to make 'active'.")
-      newChoice = int(input()) 
-      # coolBro = Customer.get_customers()[newChoice -1] 
-        # if newChoice == x[0]:
-        #   print("doing it" , newChoice)
-        #   print("this", x[0])
-         
-      with sqlite3.connect("bangazon_cli.db") as bang:
-        cursor = bang.cursor()
 
-       
-        cursor.execute("UPDATE Customers SET is_active = 'false' WHERE customer_id = '{}'".format(newChoice -1))
-        # except:
-        #   print("except")
+    choice = int(input(">"))
+
+    if choice == 1: 
+
+      Customer.add_new()
+      
+    elif choice == 2:
+
+      Customer.change_status()
+
 
         
 
