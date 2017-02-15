@@ -69,7 +69,7 @@ class Product():
 								product.get_description(), 
 								product.get_qty(), 
 								product.get_category(),
-								customer.get_customer_id(customer)
+								product.get_customer_id(customer)
 								)
 							)
 	# Use update to allow multiples of a single product, with the quantity field 

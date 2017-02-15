@@ -3,7 +3,7 @@
 
 import sqlite3 
 
-class Category(): 
+class Categories(): 
 	def __init__(self, category_name): 
 		self.__category_name = category_name 
 	
@@ -25,7 +25,6 @@ class Category():
 					(
 						category_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 						category_name TEXT NOT NULL,
-
 						CONSTRAINT name_unique UNIQUE (category_name)
 					)
 				""")

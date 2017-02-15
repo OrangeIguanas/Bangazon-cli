@@ -6,7 +6,7 @@ Creating Customer Class that will be tied to active customer
 
 class Customer():
 
-	def __init__(self, first_name, last_name, email, phone_number, city, state, postalZip, address):
+	def __init__(self, first_name, last_name, email, phone_number, city, state, postalZip, address, is_active):
 		self.__first_name = first_name
 		self.__last_name = last_name
 		self.__email = email
@@ -59,18 +59,18 @@ class Customer():
    
 #Method to set an inactive customer for logging out
 	def set_logout_customer(self):
-		self.__is_active = False
+		self.__is_active = False 
 		return self.__is_active
 
 
 	def save(self, customer):
 		"""Method To Create A Table and Add Customer Information to The Rows"""
-		
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
 
 			try: 
-				cursor.execute("SELECT * FROM Customers")
+				cursor.execute("""SELECT * FROM `Customers`
+				""")
 				customers = cursor.fetchall()
 
 			except sqlite3.OperationalError:
@@ -94,17 +94,17 @@ class Customer():
 			cursor.execute("""
 			INSERT INTO Customers VALUES (null, "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")
 			""".format(
-						customer.get_first_name(), 
-						customer.get_last_name(), 
-						customer.get_email(), 
-						customer.get_phone_number(),
-						customer.get_city(),
-						customer.get_state(),
-						customer.get_postal_zip(),
-						customer.get_address(),
-						customer.get_active_status()
-						)
-					)
+					customer.get_first_name(), 
+					customer.get_last_name(), 
+					customer.get_email(), 
+					customer.get_phone_number(),
+					customer.get_city(),
+					customer.get_state(),
+					customer.get_postal_zip(),
+					customer.get_address(),
+					customer.get_active_status()
+				)
+			)
 		
 
 	def customer_is_registered(customer):

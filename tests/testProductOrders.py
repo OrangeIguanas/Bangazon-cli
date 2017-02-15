@@ -3,7 +3,7 @@ import sys
 sys.path.append("../")
 from Methods.CreateCustomer import Customer
 from Methods.CreateOrder import Order
-from Methods.CreateCategory import Category
+from Methods.CreateCategory import Categories
 from Methods.CreateProduct import Product
 from Methods.CreateProductOrders import ProductOrders
 from Methods.CreatePaymentMethod import PaymentMethod
@@ -24,7 +24,8 @@ class TestProductOrders(unittest.TestCase):
 			city="New Penzance",
 			state="Rhode Island",
 			postalZip="52801",
-			address="300 Summer's End"
+			address="300 Summer's End",
+			is_active=False
 		)
 
 		self.payment = PaymentMethod(
@@ -36,8 +37,8 @@ class TestProductOrders(unittest.TestCase):
 			customer= self.suzy
 		)
 
-		self.category_name = Category(
-			category_name= "Factories"
+		self.category_name = Categories(
+			category_name = "chocolate factories"
 		)
 
 		self.product = Product(
@@ -95,11 +96,13 @@ class TestProductOrders(unittest.TestCase):
 	def test_save_all_to_db(self):
 		self.suzy.save(self.suzy),
 		self.payment.payment_is_registered(self.payment),
-		self.category_name.save_category(self.category),
+		self.category_name.save_category(self.category_name),
 		self.product.register_product(self.product),
-		self.order.create_order(self.order)
-		#self.productorders.get_productorders(self.productorders)
+		self.order.create_order(self.order),
+		self.productorders.get_productorders(self.productorders)
 
+	#def test_get_productorders(self):
+	#	self.
 
 if __name__ == "__main__":
 	unittest.main()
