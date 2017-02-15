@@ -1,4 +1,5 @@
 from Methods.CreateCustomer import *
+from Methods.CreatePaymentMethod import *
 # This is the CLI for interacting with our DB
 print("""\
 .----.   .--.  .-. .-. .---.   .--.  .---.  .----. .-. .-.
@@ -63,15 +64,22 @@ while True:
 
       Customer.change_status()
 
-
-        
-
+    elif choice == 3: 
 
 
-
-
+      print("Create a payment type:")  
+      nameOnCard = input("Enter name on card:") 
+      cardType = input("Card type:")
+      cardNumber = input("Card number:") 
+      expDate = input("Exp. Date:") 
+      cvv = input('CVV:') 
+      customer = Customer.get_active_customer() 
+      newPaymentType = PaymentMethod(nameOnCard, cardType, cardNumber, expDate, cvv, customer)
+      newPaymentType.save(newPaymentType)
+      print("Payment Type Added! Great work.")
+  
   except ValueError: 
-      print("ERROR")
+    print("ERROR")
 
 
 
