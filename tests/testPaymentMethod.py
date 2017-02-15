@@ -12,6 +12,10 @@ class TestPaymentMethod(unittest.TestCase):
 	Purpose: Test PaymentMethod
 	Author: Zach
 	Tests: 
+	test_can_create_a_payment_method
+	test_can_save_to_database
+	test_payment_has_properties
+	test_can_get_payment_id
 
 
 	"""
@@ -49,7 +53,7 @@ class TestPaymentMethod(unittest.TestCase):
 		self.assertTrue(PaymentMethod.payment_is_registered(self.visa))
 		print(self.visa.get_card_type())
 
-	def test_product_has_properties(self):
+	def test_payment_has_properties(self):
 		# Testing if visa Has All Required Field Properties
 		self.assertIsNotNone(self.visa.get_name_on_card())
 		self.assertIsNotNone(self.visa.get_card_type())
