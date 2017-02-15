@@ -91,7 +91,7 @@ class PaymentMethod():
 						payment.get_card_number(), 
 						payment.get_exp_date(),
 						payment.get_cvv(),
-						payment.get_customer(),
+						1,
 						)
 					)
 		
@@ -99,7 +99,7 @@ class PaymentMethod():
 	Check if information is stored in database
 	'''
 	
-	def payment_is_registered(self, payment):
+	def payment_is_registered(payment):
 		with sqlite3.connect("bangazon_cli.db") as bang:
 			cursor = bang.cursor()
 
@@ -146,6 +146,23 @@ class PaymentMethod():
 
 
 
+	def get_payment_id(self, payment):
+		"""Method To return the PaymentMethods's ID"""
 
+		# connect to the database
+		with sqlite3.connect("bangazon_cli.db") as bang:
+			cursor = bang.cursor()
+
+			try: 
+				cursor.execute("SELECT * FROM PaymentMethods p WHERE p.card_number = '{}'".format(payment.get_card_number()))
+				
+
+				data = cursor.fetchall()
+				print("Data", data[0][0])
+
+				return data[0][0]
+
+			except sqlite3.OperationalError:
+				print("Error")
 
 

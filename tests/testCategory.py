@@ -19,7 +19,7 @@ class TestCategory(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		self.food = Category(
-			category_name = "Food")
+		category_name = "Food")
 
 
 	def test_can_create_a_category(self):

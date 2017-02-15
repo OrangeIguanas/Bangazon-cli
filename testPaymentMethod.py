@@ -2,8 +2,8 @@ import unittest
 import sys
 sys.path.append("../")
 
-from Methods.CreatePaymentMethod import PaymentMethod
-from Methods.CreateCustomer import Customer
+from CreatePaymentMethod import PaymentMethod
+from CreateCustomer import Customer
 
 """Tests For Payment Method"""
 
@@ -95,13 +95,13 @@ class TestPaymentMethod(unittest.TestCase):
 	# 	uncomment 98
 	# 	'''
 
-	# 	self.visa_card.save(self.visa_card)
+		self.visa_card.save(self.visa_card)
 
-	# 	'''
-	# 	comment out until UNIQUE error displays. Then uncomment 104 and comment out 97
-	# 	'''
+		'''
+		comment out until UNIQUE error displays. Then uncomment 104 and comment out 97
+		'''
 
-	# 	self.assertTrue(self.visa_card.payment_is_registered(self.visa_card))
+		self.assertTrue(self.visa_card.payment_is_registered(self.visa_card))
 
 	# This is the test for getting the required Payment Method information. 
 	def test_get_payment_name_and_number(self): 
