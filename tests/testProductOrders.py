@@ -46,8 +46,8 @@ class TestProductOrders(unittest.TestCase):
 			price =5,
 			description='up way and side ways',
 			qty = 1,
-			category = self.category_name,
-			customer = self.suzy
+			category_id= self.category_name,
+			customer= self.suzy
 		)
 
 		self.order = Order(
@@ -82,7 +82,6 @@ class TestProductOrders(unittest.TestCase):
 		print(wonkavator.get_order())
 
 	def test_save_productorders_to_db(self):
-		wonkavator = ProductOrders(product=3, order=5)
 		self.assertTrue(wonkavator)
 		print("working")
 
@@ -93,13 +92,14 @@ class TestProductOrders(unittest.TestCase):
 	
 	"""
 
+	
 	def test_save_all_to_db(self):
 		self.suzy.save(self.suzy),
 		self.payment.payment_is_registered(self.payment),
 		self.category_name.save_category(self.category_name),
-		self.product.register_product(self.product),
-		self.order.create_order(self.order),
-		self.productorders.get_productorders(self.productorders)
+		self.product.register_product(self.product, self.category_name, self.suzy),
+		self.order.create_order(self.order, self.suzy), #, self.payment)
+		self.productorders.save_productorders(self.productorders,  self.order, self.product, self.suzy)
 
 	#def test_get_productorders(self):
 	#	self.

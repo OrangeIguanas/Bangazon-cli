@@ -48,3 +48,23 @@ class Categories():
 
 			selected_category = cursor.fetchall()
 			return len(selected_category) == 1
+
+	def get_category_id(self, category):
+		"""Method To return the Order's ID"""
+
+		# connect to the database
+		with sqlite3.connect("bangazon_cli.db") as bang:
+			cursor = bang.cursor()
+
+			try: 
+				# select order_id that matches the customer's id and is false
+				cursor.execute("SELECT * FROM Categories c WHERE c.category_name = '{}'".format(category.get_category_name()))
+				
+
+				data = cursor.fetchall()
+				# Data [(1, 'Weapons')]
+				# Categoryid,  Category Name
+				return data[0][0]
+
+			except sqlite3.OperationalError:
+				print("Error")

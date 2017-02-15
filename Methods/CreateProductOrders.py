@@ -13,7 +13,7 @@ class ProductOrders():
 	def get_order(self):
 		return self.__order  
 
-	def save_productorders(self, productorders):
+	def save_productorders(self, productorders, order, product, customer):
 
 		
 		with sqlite3.connect("bangazon_cli.db") as bang:
@@ -29,15 +29,15 @@ class ProductOrders():
 						productorders_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 						product_id INTEGER NOT NULL,
 						order_id INTEGER NOT NULL,
-						FOREIGN KEY(product_id) REFERENCES `Product`(product_id),
-						FOREIGN KEY (order_id) REFERENCES `Order` (order_id)                        )
+						FOREIGN KEY(product_id) REFERENCES `Products`(product_id),
+						FOREIGN KEY (order_id) REFERENCES `CustomerOrder` (customer_order_id)                        )
 					""")
 
 			cursor.execute("""
-			INSERT INTO ProductOrders VALUES (null, '{}', '{}')
+			INSERT INTO ProductOrders VALUES (null, "{}", "{}")
 			""".format(
-						productorders.get_order(),
-						productorders.get_product()
+					order.get_order_id(order, customer),
+					product.get_product(product_id)
 				)
 			)
 
@@ -53,8 +53,9 @@ class ProductOrders():
 
 					""".format(productorders.get_productorders(1),
 						productorders.get_product(),
-						productorders.get_order())
-			)
+						productorders.get_order()
+					)
+				)
 
 			except	sqlite3.OperationalError:
 				return False
